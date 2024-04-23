@@ -3,18 +3,35 @@
 This is an Android prototype for Rahber app.
 ![Rahber](https://rahbertheadvisor.com/)
 
-The app has 3 screens
-Course screen - lists all the courses with the following details
+Development setup
+- Android Studio Iguana | 2023.2.1
+- Android SDK API Level 34
+- VM: OpenJDK 64-Bit Server VM by JetBrains s.r.o.
+
+Running instructions
+-Install latest Android Studio
+-Make sure the setup has API level installed in SDK Manager
+-Build the project and run
+
+The app has 3 Dashboard screens. 
+
+COURSE Screen - lists all the courses with the following details
 1. Course image
 2. Course title
 3. Course instructor name
 4. Course short description
 
-My Courses Screen - lists all the courses the current user enrolled to.
+MY COURSES Screen - lists all the courses the current user enrolled to.
 This lists the same details as the Course screen 
 
-Recommended (NOT IMPLEMENTED)- lists all the courses recommended to the user based on the interests 
+RECOMMENDED (NOT IMPLEMENTED)- lists all the courses recommended to the user based on the interests 
 and courses user selected.
+
+COURSE DETAILS Screen - displays a detailed information about a course which consists of the following
+1. Course image
+2. Course title
+3. Course long description
+4. List of video modules with module name, and thumbnail image.
 
 The app is developed using MVVM Architecture which seperates the UI and Business logic using 3 layers
 Model - Business logic / API integration
