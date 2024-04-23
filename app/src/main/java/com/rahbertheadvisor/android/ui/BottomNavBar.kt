@@ -33,7 +33,7 @@ fun BottomNavigationBar(navController: NavController, visibility: State<Boolean>
                 val items = listOf(
                     BottomNavItem.AllCourses,
                     BottomNavItem.MyCourses,
-                    BottomNavItem.Profile,
+                    BottomNavItem.Recommended,
                 )
 
                 items.forEach { item ->

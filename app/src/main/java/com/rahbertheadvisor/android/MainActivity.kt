@@ -54,9 +54,9 @@ class MainActivity : ComponentActivity() {
                             MyCourses(navController = navController)
                             bottomBarState.value = true
                         }
-                        composable(BottomNavItem.Profile.route) {
+                        composable(BottomNavItem.Recommended.route) {
                             Box(modifier = Modifier.fillMaxSize()) {
-                                Text(text = "Profile!",
+                                Text(text = "Not implemented! (In progress)",
                                     modifier = Modifier.align(Alignment.Center))
                             }
                             bottomBarState.value = true
