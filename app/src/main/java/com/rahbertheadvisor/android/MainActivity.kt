@@ -24,6 +24,7 @@ import com.rahbertheadvisor.android.common.Destination
 import com.rahbertheadvisor.android.dashboard.model.Course
 import com.rahbertheadvisor.android.dashboard.view.AllCourses
 import com.rahbertheadvisor.android.dashboard.view.CourseDetails
+import com.rahbertheadvisor.android.dashboard.view.Explore
 import com.rahbertheadvisor.android.dashboard.view.MyCourses
 import com.rahbertheadvisor.android.ui.BottomNavItem
 import com.rahbertheadvisor.android.ui.BottomNavigationBar
@@ -55,10 +56,7 @@ class MainActivity : ComponentActivity() {
                             bottomBarState.value = true
                         }
                         composable(BottomNavItem.Recommended.route) {
-                            Box(modifier = Modifier.fillMaxSize()) {
-                                Text(text = "Not implemented! (In progress)",
-                                    modifier = Modifier.align(Alignment.Center))
-                            }
+                            Explore(navController = navController)
                             bottomBarState.value = true
                         }
                         composable(Destination.CourseDetails.route, arguments = listOf(navArgument("id") { type = NavType.IntType })) { navEntry ->

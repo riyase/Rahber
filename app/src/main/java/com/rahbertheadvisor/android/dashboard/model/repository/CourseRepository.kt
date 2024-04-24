@@ -11,5 +11,6 @@ interface CourseRepository {
     suspend fun disEnrollCourse(course: Course)
     suspend fun isEnrolled(course: Course): Boolean
     fun getEnrolledCourses(): StateFlow<List<Course>>
+    fun getRecommneded(): List<Course>
 
 }

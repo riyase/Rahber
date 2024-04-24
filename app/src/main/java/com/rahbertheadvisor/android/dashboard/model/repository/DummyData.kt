@@ -48,7 +48,7 @@ object DummyData {
             """.trimIndent(),
             instructor = "Rishi Sunak",
             videoModules = videoModules,
-            tags = listOf("Science", "History")
+            tags = "Science,History"
         ),
         Course(
             id = 2,
@@ -60,7 +60,7 @@ object DummyData {
             """.trimIndent(),
             instructor = "Barak Obama",
             videoModules = videoModules,
-            tags = listOf("Biology", "Wildlife")
+            tags = "Biology,Wildlife"
         )
     )
 
@@ -90,6 +90,86 @@ object DummyData {
 
     fun getEnrolledCourses(): StateFlow<List<Course>> {
         return enrolledCourses
+    }
+
+    val interests = setOf(
+        "Agile methods",
+        "Activism",
+        "Authenticity",
+        "GNI",
+        "Blockchain",
+        "Blogging",
+        "Coaching",
+        "Corporate Social Responsibility",
+        "Creative thinking",
+        "Democracy",
+        "Digital Media",
+        "Digital Marketing",
+        "Digitization",
+        "Diversity",
+        "Eco-Design",
+        "Emancipation",
+        "Energy efficiency",
+        "Engagement",
+        "Development",
+        "Nutrition",
+        "Europe",
+        "Fair Finance",
+        "Family",
+        "Finance",
+        "Refugee Solidarity",
+        "Freedom",
+        "Peace",
+        "Science",
+        "History",
+        "Biology",
+        "Wildlife",
+        "Gastronomy",
+        "Money system",
+        "Community",
+        "Genetic engineering",
+        "Justice",
+        "Social commitment"
+    )
+
+    val userInterests = mutableSetOf(
+        "Science",
+    )
+
+    fun getRelatedCourses(): List<Course> {
+        val set = hashSetOf<String>()
+        enrolledCourses.value.forEach { course ->
+            course.tags.split(",").forEach { tag -> set.add(tag) }
+        }
+
+        val related = _courses.filter {
+            hasTag(it, set)
+        }
+        return related
+    }
+
+    fun getInterestedCourses(): List<Course> {
+        return _courses.filter {
+            hasTag(it, userInterests)
+        }
+    }
+
+    fun getRecommended(): List<Course> {
+        val related = getRelatedCourses()
+        val relatedIds = related.map{ it.id }.toHashSet()
+        return _courses.filter {
+            !relatedIds.contains(it.id) && hasTag(it, userInterests)
+        }
+    }
+
+    private fun hasTag(course: Course, tags: Set<String>): Boolean {
+        for (tag in tags) {
+            //we can improve the matching by
+            if (course.tags.contains(tag)) {
+                return true
+            }
+        }
+        return false
     }
 
 }

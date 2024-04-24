@@ -8,5 +8,5 @@ data class Course(
     val longDescription: String,
     val instructor: String,
     val videoModules: List<VideoModule>,
-    val tags: List<String>
+    val tags: String
 )

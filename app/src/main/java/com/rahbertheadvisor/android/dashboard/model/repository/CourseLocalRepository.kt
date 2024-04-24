@@ -29,5 +29,9 @@ class CourseLocalRepository: CourseRepository {
         return DummyData.getEnrolledCourses()
     }
 
+    override fun getRecommneded(): List<Course> {
+        return DummyData.getRecommended()
+    }
+
 
 }
