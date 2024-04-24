@@ -1,6 +1,8 @@
 # Rahber Prototype
 
 This is an Android prototype for Rahber app.
+![alt text](https://github.com/riyase/Rahber/blob/f4f85280d2cea4ed7d50fddbb3a7ed4a2071d53d/app/src/main/res/drawable/rahber.png?raw=true)
+
 
 Development setup
 - Android Studio Iguana | 2023.2.1
