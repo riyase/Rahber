@@ -25,6 +25,7 @@ import com.rahbertheadvisor.android.dashboard.model.Course
 import com.rahbertheadvisor.android.dashboard.view.AllCourses
 import com.rahbertheadvisor.android.dashboard.view.CourseDetails
 import com.rahbertheadvisor.android.dashboard.view.Explore
+import com.rahbertheadvisor.android.dashboard.view.InterestsScreen
 import com.rahbertheadvisor.android.dashboard.view.MyCourses
 import com.rahbertheadvisor.android.ui.BottomNavItem
 import com.rahbertheadvisor.android.ui.BottomNavigationBar
@@ -58,6 +59,10 @@ class MainActivity : ComponentActivity() {
                         composable(BottomNavItem.Recommended.route) {
                             Explore(navController = navController)
                             bottomBarState.value = true
+                        }
+                        composable(Destination.UserInterests.route) {
+                            InterestsScreen(navController = navController)
+                            bottomBarState.value = false
                         }
                         composable(Destination.CourseDetails.route, arguments = listOf(navArgument("id") { type = NavType.IntType })) { navEntry ->
                             navEntry.arguments?.getInt("id")?.let { id ->

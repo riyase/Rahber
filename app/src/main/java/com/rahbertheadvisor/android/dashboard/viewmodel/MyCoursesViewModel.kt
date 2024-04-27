@@ -3,6 +3,7 @@ package com.rahbertheadvisor.android.dashboard.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.rahbertheadvisor.android.dashboard.model.Course
+import com.rahbertheadvisor.android.dashboard.model.Interest
 import com.rahbertheadvisor.android.dashboard.model.repository.CourseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -15,12 +16,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyCoursesViewModel @Inject constructor(
-    val repository: CourseRepository
+    private val repository: CourseRepository
 ): ViewModel() {
 
     val myCourses = repository.getEnrolledCourses()
 
-    val _recommended = MutableStateFlow<List<Course>>(listOf())
+    private val _interests = MutableStateFlow<List<Interest>>(listOf())
+    val interests = _interests.asStateFlow()
+
+    private val _recommended = MutableStateFlow<List<Course>>(listOf())
     val recommended = _recommended.asStateFlow()
 
     fun fetchRecommended() {
@@ -29,5 +33,21 @@ class MyCoursesViewModel @Inject constructor(
         }
 
     }
+
+    fun getInterests() {
+        _interests.value = repository.getInterests()
+    }
+
+    fun toggleInterest(position: Int) {
+        val updated = mutableListOf<Interest>()
+        updated.addAll(_interests.value)
+        updated[position] = updated[position].copy(active = !updated[position].active)
+        _interests.value = updated
+    }
+
+    fun saveInterests() {
+        repository.saveInterests(_interests.value)
+    }
+
 
 }

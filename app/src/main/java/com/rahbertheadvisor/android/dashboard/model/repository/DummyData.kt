@@ -1,6 +1,7 @@
 package com.rahbertheadvisor.android.dashboard.model.repository
 
 import com.rahbertheadvisor.android.dashboard.model.Course
+import com.rahbertheadvisor.android.dashboard.model.Interest
 import com.rahbertheadvisor.android.dashboard.model.VideoModule
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -92,49 +93,53 @@ object DummyData {
         return enrolledCourses
     }
 
-    val interests = setOf(
-        "Agile methods",
-        "Activism",
-        "Authenticity",
-        "GNI",
-        "Blockchain",
-        "Blogging",
-        "Coaching",
-        "Corporate Social Responsibility",
-        "Creative thinking",
-        "Democracy",
-        "Digital Media",
-        "Digital Marketing",
-        "Digitization",
-        "Diversity",
-        "Eco-Design",
-        "Emancipation",
-        "Energy efficiency",
-        "Engagement",
-        "Development",
-        "Nutrition",
-        "Europe",
-        "Fair Finance",
-        "Family",
-        "Finance",
-        "Refugee Solidarity",
-        "Freedom",
-        "Peace",
-        "Science",
-        "History",
-        "Biology",
-        "Wildlife",
-        "Gastronomy",
-        "Money system",
-        "Community",
-        "Genetic engineering",
-        "Justice",
-        "Social commitment"
+    val interests = listOf(
+        Interest("Agile methods", false),
+        Interest("Activism", false),
+        Interest("Authenticity", false),
+        Interest("GNI", false),
+        Interest("Blockchain", false),
+        Interest("Blogging", false),
+        Interest("Coaching", false),
+        Interest("Corporate Social Responsibility", false),
+        Interest("Creative thinking", false),
+        Interest("Democracy", false),
+        Interest("Digital Media", false),
+        Interest("Digital Marketing", false),
+        Interest("Digitization", false),
+        Interest("Diversity", false),
+        Interest("Eco-Design", false),
+        Interest("Emancipation", false),
+        Interest("Energy efficiency", false),
+        Interest("Engagement", false),
+        Interest("Development", false),
+        Interest("Nutrition", false),
+        Interest("Europe", false),
+        Interest("Fair Finance", false),
+        Interest("Family", false),
+        Interest("Finance", false),
+        Interest("Refugee Solidarity", false),
+        Interest("Freedom", false),
+        Interest("Peace", false),
+        Interest("Science", true),
+        Interest("History", false),
+        Interest("Biology", false),
+        Interest("Wildlife", false),
+        Interest("Gastronomy", false),
+        Interest("Money system", false),
+        Interest("Community", false),
+        Interest("Genetic engineering", false),
+        Interest("Justice", false),
+        Interest("Social commitment", false)
     )
 
-    val userInterests = mutableSetOf(
-        "Science",
-    )
+    fun saveInterests(updated: List<Interest>) {
+        for (i in interests.indices) {
+            if (updated[i].active != interests[i].active) {
+                interests[i].active = updated[i].active
+            }
+        }
+    }
 
     fun getRelatedCourses(): List<Course> {
         val set = hashSetOf<String>()
@@ -150,7 +155,7 @@ object DummyData {
 
     fun getInterestedCourses(): List<Course> {
         return _courses.filter {
-            hasTag(it, userInterests)
+            hasTag(it, interests.filter { it.active }.map { it.name }.toSet())
         }
     }
 
@@ -158,7 +163,8 @@ object DummyData {
         val related = getRelatedCourses()
         val relatedIds = related.map{ it.id }.toHashSet()
         return _courses.filter {
-            !relatedIds.contains(it.id) && hasTag(it, userInterests)
+            !relatedIds.contains(it.id)
+                    && hasTag(it, interests.filter { it.active }.map { it.name }.toSet())
         }
     }
 

@@ -1,6 +1,7 @@
 package com.rahbertheadvisor.android.dashboard.model.repository
 
 import com.rahbertheadvisor.android.dashboard.model.Course
+import com.rahbertheadvisor.android.dashboard.model.Interest
 import kotlinx.coroutines.flow.StateFlow
 
 interface CourseRepository {
@@ -10,6 +11,8 @@ interface CourseRepository {
     suspend fun enrollCourse(course: Course)
     suspend fun disEnrollCourse(course: Course)
     suspend fun isEnrolled(course: Course): Boolean
+    fun getInterests(): List<Interest>
+    fun saveInterests(updated: List<Interest>)
     fun getEnrolledCourses(): StateFlow<List<Course>>
     fun getRecommneded(): List<Course>
 

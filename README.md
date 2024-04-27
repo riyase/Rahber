@@ -25,8 +25,15 @@ COURSE Screen - lists all the courses with the following details
 MY COURSES Screen - lists all the courses the current user enrolled to.
 This lists the same details as the Course screen 
 
-RECOMMENDED (NOT IMPLEMENTED)- lists all the courses recommended to the user based on the interests 
+Explore - lists all the courses recommended to the user based on the interests
 and courses user selected.
+![alt text](https://github.com/riyase/Rahber/blob/f4f85280d2cea4ed7d50fddbb3a7ed4a2071d53d/app/src/main/res/drawable/explore.png?raw=true)
+The existing two courses has fixed tags/interests attached to it as the following
+1. The MERN Fullstack Guide -> Science, History
+2. The Complete React Native -> Biology, Wildlife
+So based on the Interest selection, we can see thes couses will show/hide on the Explore screen.
+![alt text](https://github.com/riyase/Rahber/blob/f4f85280d2cea4ed7d50fddbb3a7ed4a2071d53d/app/src/main/res/drawable/interest_logic.png?raw=true)
+
 
 COURSE DETAILS Screen - displays a detailed information about a course which consists of the following
 1. Course image

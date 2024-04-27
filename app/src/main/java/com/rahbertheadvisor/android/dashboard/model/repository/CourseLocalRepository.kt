@@ -1,6 +1,7 @@
 package com.rahbertheadvisor.android.dashboard.model.repository
 
 import com.rahbertheadvisor.android.dashboard.model.Course
+import com.rahbertheadvisor.android.dashboard.model.Interest
 import kotlinx.coroutines.flow.StateFlow
 
 class CourseLocalRepository: CourseRepository {
@@ -23,6 +24,14 @@ class CourseLocalRepository: CourseRepository {
 
     override suspend fun isEnrolled(course: Course): Boolean {
         return DummyData.isEnrolled(course)
+    }
+
+    override fun getInterests(): List<Interest> {
+        return DummyData.interests
+    }
+
+    override fun saveInterests(updated: List<Interest>){
+        DummyData.saveInterests(updated)
     }
 
     override fun getEnrolledCourses(): StateFlow<List<Course>> {
