@@ -27,12 +27,12 @@ This lists the same details as the Course screen
 
 Explore - lists all the courses recommended to the user based on the interests
 and courses user selected.
-![alt text](https://github.com/riyase/Rahber/blob/f4f85280d2cea4ed7d50fddbb3a7ed4a2071d53d/app/src/main/res/drawable/explore.png?raw=true)
+![alt text](https://github.com/riyase/Rahber/blob/488e53d2722c98466283bbc03437a8f3d2b56f2c/app/src/main/res/drawable/explore.png)
 The existing two courses has fixed tags/interests attached to it as the following
 1. The MERN Fullstack Guide -> Science, History
 2. The Complete React Native -> Biology, Wildlife
 So based on the Interest selection, we can see thes couses will show/hide on the Explore screen.
-![alt text](https://github.com/riyase/Rahber/blob/f4f85280d2cea4ed7d50fddbb3a7ed4a2071d53d/app/src/main/res/drawable/interest_logic.png?raw=true)
+![alt text](https://github.com/riyase/Rahber/blob/488e53d2722c98466283bbc03437a8f3d2b56f2c/app/src/main/res/drawable/interest_logic.png)
 
 
 COURSE DETAILS Screen - displays a detailed information about a course which consists of the following
